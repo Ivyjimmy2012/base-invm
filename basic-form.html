@@ -1,0 +1,190 @@
+
+
+{% from '_formhelpers.html' import render_field %}
+
+
+
+
+
+
+
+
+
+
+<div  class="create-post-header" >
+    
+
+    <div class="cancel-post" id="cancel-post"  command="normal"> 
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><path d="M30.83 14.83L28 12 16 24l12 12 2.83-2.83L21.66 24z"/></svg>
+
+    </div>
+
+
+
+
+    <div class="post-type-indicator">
+        
+        edit basic info
+
+    </div>
+
+
+
+    <div id="done-with-post">
+      
+
+            <form id="generic-post-form"  method="POST" enctype="multipart/form-data"  action="{{url_for('home.edit_profile', id = user) }}">
+
+            {{form.csrf_token}}
+
+            {{ form.hidden_tag() }}
+
+            <input type=submit value="update" >
+
+            </form>
+
+     
+
+    </div>
+
+
+
+
+</div><!-- create-post-header -->
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="scrollable-post-area">
+    
+
+
+
+
+    <div  class="create-post-body" >
+            
+
+
+
+
+    <script src="{{url_for('static', filename='assets/js/modals/preview-event-upload.js' )}}"></script>
+
+
+<br>
+<br>
+
+        <div class="post-types-parent">
+          
+
+
+
+                            <div class="input-wrap">
+                                
+    
+                            <label>describe yourself in detail</label>
+
+                            {{render_field(form.update_basic_info_indicator, class="input-wrap-textarea" , form="generic-post-form",  required = "true", minlength="3", placeholder="you are ...." ) }}
+
+                            
+                            </div>
+
+
+
+
+
+
+
+                            <!-- select --> 
+
+
+                            <div class="input-wrap">
+
+                                <label id="radio-label" > gender </label>
+                          
+                                {{ render_field(form.gender , form="generic-post-form",  required = "false") }}
+
+
+                           </div>
+
+
+
+
+
+
+                            <!-- select --> 
+
+
+                            <div class="input-wrap">
+
+                                <label id="radio-label" > religion </label>
+                          
+                                {{ render_field(form.religion , form="generic-post-form",  required = "false") }}
+
+
+                           </div>
+
+
+
+
+
+                            <div class="input-wrap">
+
+                            <label>address</label>
+                                
+                            {{render_field(form.title, form="generic-post-form", maxlength="100") }}
+
+                            </div>
+
+
+
+
+                            <!-- select --> 
+
+
+                            <div class="input-wrap">
+
+                                <label id="radio-label" > are you currently searching for a roomate ? </label>
+                          
+                                {{ render_field(form.needs_roomate , form="generic-post-form",  required = "true") }}
+
+
+                           </div>
+
+
+
+
+       
+
+
+                    
+
+
+        </div><!-- post-types-parent -->
+
+
+
+        </div><!-- create-post-body -->
+
+
+
+
+</div><!-- scrollable-post-area -->
